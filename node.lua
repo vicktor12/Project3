@@ -1,6 +1,7 @@
 local class = require "libs.middleclass"
 local colors = require "libs.ansicolors"
 
+---@class Node
 local Node = class("Node")
 
 ---Constructor
