@@ -30,6 +30,8 @@ function Engine:runMainLoop()
         local choiceIndex = self:askForInput(#validChoices)
         local choice = validChoices[choiceIndex]
 
+        choice:runRoutine()
+
         local destinationId = choice.destination
         local destinationNode = nodeLoader.getNode(destinationId)
         game.activeNode = destinationNode
