@@ -25,7 +25,7 @@ table.insert(node.choices, Choice:new(
 ))
 table.insert(node.choices, Choice:new(
     "andes.start",
-    "Para a floresta misteriosas de Andes"
+    "Para a floresta misteriosa de Andes"
 ))
 
 

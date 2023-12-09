@@ -1,5 +1,8 @@
+os.execute("chcp 65001 > NUL")
+
 local GameData = require "gamedata"
 local nodeLoader = require "node_loader"
+local Engine = require "engine"
 
 ---@type GameData
 local gameData = GameData:new()
@@ -7,9 +10,7 @@ _G.game = gameData
 
 
 nodeLoader.loadnodes()
-for id, node in pairs(nodeLoader.getNodes()) do
-    print(id .. ": " .. node.title)
-end
+game.activeNode = nodeLoader.getInitialNode()
 
-local initialNode = nodeLoader.getInitialNode()
-print(initialNode.id .. ": " .. initialNode.description)
+local engine = Engine:new() ---@type Engine
+engine:runMainLoop()
