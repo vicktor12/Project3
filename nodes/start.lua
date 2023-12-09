@@ -8,7 +8,7 @@ local node = Node:new(ID) ---@type Node
 
 node.title = "Uma nova aventura"
 node.description = "Em um belo dia de sol, você decidir se ajeitar e embarcar em uma nova aventura. Porém qual será o destino desse novo desafio?"
-node.header = [[
+node.header = [[%{yellow}
     
    _____       .___                    __                           _________.__              .__          __                
    /  _  \    __| _/__  __ ____   _____/  |_ __ _________   ____    /   _____/|__| _____  __ __|  | _____ _/  |_  ___________ 

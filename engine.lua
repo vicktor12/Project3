@@ -1,6 +1,7 @@
 local class = require "libs.middleclass"
 local nodeLoader = require "node_loader"
 local ansicolorsx = require "libs.ansicolors"
+local utils = require "utils"
 
 ---@class Engine
 local Engine = class("Engine")
@@ -20,6 +21,7 @@ end
 function Engine:runMainLoop()
     while not game.isOver do
         local node = game.activeNode
+        utils.clearScreen()
         self:printNode(node)
 
         local validChoices = self:getValidChoices(node)
@@ -41,7 +43,7 @@ end
 function Engine:printNode(node)
     if node.header then
         print("%{blue}=====================================")
-        print("%{yellow}"..node.header)
+        print(node.header)
     end
     print("%{red}======================== ".. node.title .. " ========================")
     print("%{cyan}"..node.description)
@@ -78,7 +80,7 @@ function Engine:askForInput(amount)
         if isAnswervalid then
             return answer
         end
-        io.write("%{red}Resposta inválida, tente novamente.\n")
+        print("%{red}Resposta inválida, tente novamente.\n")
     end
 end
 
