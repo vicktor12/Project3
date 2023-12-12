@@ -28,10 +28,10 @@ function Choice:runCondition()
     return true
 end
 
----@return boolean
+---@return function
 function Choice:runRoutine()
     if self.routine ~= nil and type(self.routine) == "function" then
-        return self.routine
+        self.routine()
     end
 end
 

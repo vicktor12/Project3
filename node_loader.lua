@@ -28,6 +28,7 @@ function nodeLoader.loadnodes()
     nodeDictionary[initialNode] = initialNode
 
     loadNode("nodes.andes.start")
+    loadNode("nodes.andes.surprise")
     loadNode("nodes.wahalla.start")
 
     for id, node in pairs(nodeDictionary) do

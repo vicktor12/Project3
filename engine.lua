@@ -23,8 +23,21 @@ function Engine:runMainLoop()
         local node = game.activeNode
         utils.clearScreen()
         self:printNode(node)
+        if node.gameOver then
+            print()
+            print("%{red}====== Fim de Jogo! ==========")
+            os.exit()
+        elseif node.gameWon then
+            print()
+            print("%{green}====== Você venceu! ==========")
+            os.exit()
+        end
 
         local validChoices = self:getValidChoices(node)
+        if #validChoices == 0 then
+            print("Nenhuma escolha válida para o node " .. node.id)
+            os.exit()
+        end
 
         self:showChoices(validChoices)
         local choiceIndex = self:askForInput(#validChoices)
@@ -40,6 +53,21 @@ function Engine:runMainLoop()
     
 end
 
+---@param title string/nil
+---@return string
+local function createSeparator(title)
+    local size = 50
+    local result = "%{red}-----"
+    local length = 5
+    if title then
+        result = string.format("%s[%%{yellow}%s%%{white}]", result, title:upper())
+        length = length + 2 + title:len()
+    end
+    for i = length, size, 1 do
+        result = result .. "-"
+    end
+    return result
+end
 
 ---@param node Node
 function Engine:printNode(node)
@@ -47,9 +75,11 @@ function Engine:printNode(node)
         print("%{blue}=====================================")
         print(node.header)
     end
-    print("%{red}======================== ".. node.title .. " ========================")
+    print(createSeparator(node.title))
+    -- print("%{red}======================== ".. node.title .. " ========================")
     print("%{cyan}"..node.description)
-    print("%{red}===================================================================")
+    -- print("%{red}===================================================================")
+    print(createSeparator())
 end
 
 ---@param node Node

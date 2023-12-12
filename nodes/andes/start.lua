@@ -33,6 +33,10 @@ ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 --     "andes.start",
 --     "Para a floresta misteriosas de Andes"
 -- ))
+table.insert(node.choices, Choice:new(
+     "andes.surprise",
+     "Explorar a densa floresta de Andes"
+))
 
 
 return node
